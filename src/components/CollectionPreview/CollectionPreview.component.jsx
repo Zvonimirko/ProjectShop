@@ -11,7 +11,7 @@ function CollectionPreview({...otherCollectionProps}) {
       <div className='collection-title'>{title.toUpperCase()}</div>
       <div className='items'>
         {
-          items.filter((item, idx) => idx < 4).map(({id, ...item}) => <CollectionItem key={id} {...item}/>)
+          items.filter((item, idx) => idx < 4).map((item) => <CollectionItem key={item.id} item={item}/>)
         }
       </div>
     </div>
