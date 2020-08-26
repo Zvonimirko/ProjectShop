@@ -9,10 +9,10 @@ import './header.styles.scss'
 import { ReactComponent as Logo } from '../../assets/crown.svg'
 import CartIcon from '../cartIcon/cartIcon.component'
 import CartDropdown from '../cartDropdown/cartDropdown.component'
+import { selectCartHidden } from '../../redux/cart/cart.selectors'
+import { selectCurrentUser } from '../../redux/user/user.selectors'
 
 function Header({ currentUser, hidden }) {
-  console.log(hidden)
-
   return (
     <div className='header'>
       <Link className='logo-container' to='/'><Logo /></Link>
@@ -32,9 +32,9 @@ function Header({ currentUser, hidden }) {
   )
 }
 
-const mapStateToProps = ({user: {currentUser}, cart: { hidden }}) => ({
-  currentUser,
-  hidden
+const mapStateToProps = (state) => ({
+  currentUser: selectCurrentUser(state),
+  hidden: selectCartHidden(state)
 })
 
 
