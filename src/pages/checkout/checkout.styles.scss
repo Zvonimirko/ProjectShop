@@ -1,0 +1,44 @@
+.checkout {
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 50px auto 0;
+
+  .checkout-header {
+    display: flex;
+    padding: 10px 0;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid darkgray;
+
+    .checkout-header-block {
+      width: 23%;
+      text-transform: capitalize;
+
+      &:last-child {
+        width: 8%;
+      }
+    }
+  }
+
+  .checkout-total {
+    margin-top: 30px;
+    margin-left: auto;
+    font-size: 36px;
+  }
+
+  .checkout-button {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .checkout-warning {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 24px;
+    color: red;
+  }
+}

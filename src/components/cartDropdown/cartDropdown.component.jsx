@@ -7,8 +7,9 @@ import './cartDropdown.styles.scss'
 import CustomButton from '../customButton/customButton.component'
 import CartItem from '../cartItem/cartItem.component'
 import { selectCartItems } from '../../redux/cart/cart.selectors'
+import { toggleCartHidden } from '../../redux/cart/cart.actions'
 
-function CartDropdown({ cartItems, history }) {
+function CartDropdown({ cartItems, history, dispatch }) {
   return (
     <div className='cart-dropdown'>
       <div className='cart-items'>
@@ -18,7 +19,10 @@ function CartDropdown({ cartItems, history }) {
             : <span className='empty-cart'>Your cart is empty</span>
         }
       </div>
-      <CustomButton onClick={() => history.push('/checkout')}>GO TO CHECKOUT</CustomButton>
+      <CustomButton onClick={() => {
+        history.push('/checkout')
+        dispatch(toggleCartHidden())
+        }}>GO TO CHECKOUT</CustomButton>
     </div>
   )
 }
