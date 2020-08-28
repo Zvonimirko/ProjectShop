@@ -1,12 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
 
 import CheckoutItem from '../../components/checkoutItem/checkoutItem.component'
 
 import './checkout.styles.scss'
-import { selectCartItems } from '../../redux/cart/cart.selectors'
+import { selectCartItems, selectCartTotal } from '../../redux/cart/cart.selectors'
 
-function Checkout({ checkoutItems }) {
+function Checkout({ checkoutItems, checkoutTotal }) {
   return (
     <div className='checkout'>
       <div className='checkout-header'>
@@ -27,10 +28,10 @@ function Checkout({ checkoutItems }) {
         </div>
       </div>
         {
-          checkoutItems ? checkoutItems.map(checkoutItem => <CheckoutItem key={checkoutItem.id} {...checkoutItem}/> ) : ''
+          checkoutItems ? checkoutItems.map(checkoutItem => <CheckoutItem key={checkoutItem.id} checkoutItem={checkoutItem}/> ) : ''
         }
       <div className='checkout-total'>
-        <span>$TOTAL</span>
+        <span>TOTAL: ${checkoutTotal}</span>
       </div>
       <div className='checkout-warning'>Checkout payment</div>
         <span className='checkout-button'>Btn</span>
@@ -38,8 +39,9 @@ function Checkout({ checkoutItems }) {
   )
 }
 
-const mapStateToProps = state => ({
-  checkoutItems: selectCartItems(state)
+const mapStateToProps = state => createStructuredSelector({
+  checkoutItems: selectCartItems,
+  checkoutTotal: selectCartTotal
 })
 
 export default connect(mapStateToProps)(Checkout)
