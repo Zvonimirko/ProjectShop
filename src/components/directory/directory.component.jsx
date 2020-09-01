@@ -8,7 +8,6 @@ import './directory.styles.scss'
 import { createStructuredSelector } from 'reselect'
 
 const Directory = ({ sections }) => {
-  console.log(sections)
     return (
       <div className='sections'>
         {
